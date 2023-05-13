@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import  confusion_matrix,classification_report
-from streamlit.uploaded_file_manager import UploadedFile
+#from streamlit.uploaded_file_manager import UploadedFile
 
 st.title("Credit Card Fraud Detection\n")
 st.write("")
