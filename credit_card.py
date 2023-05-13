@@ -8,14 +8,15 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import  confusion_matrix,classification_report
-
+from streamlit.uploaded_file_manager import UploadedFile
 
 st.title("Credit Card Fraud Detection\n")
 st.write("")
 st.write("")
+uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
 st.write("")
 st.write("")
-df=st.cache(pd.read_csv)("creditcard.csv")
+df=st.cache(pd.read_csv)("uploaded_file")
 #df=df.sample(frac=0.1,random_state=48)
 if st.sidebar.checkbox("Show the DataSet"):
     st.write("The Sample dataset is: ")
