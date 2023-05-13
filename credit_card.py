@@ -16,7 +16,7 @@ st.write("")
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
 st.write("")
 st.write("")
-if uploaded_file is not none:
+if uploaded_file is not None:
     
     df=st.cache(pd.read_csv)("uploaded_file")
     #df=df.sample(frac=0.1,random_state=48)
