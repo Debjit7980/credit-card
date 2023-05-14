@@ -48,57 +48,60 @@ if uploaded_file is not None:
                 label="Select the type of chart",
                 options=["Histogram","Pie Chart","Scatter Plot"]
             )
-            st.write("")
+            chart(chart_style)
             st.write("")
             st.write("")
             st.write("Distribution of Genuine and Fraud Transactions of various charts")
             st.write("")
             st.write("")
-            if chart_style=="Histogram":
+            #function to display charts
+            def chart(chart_style):
+                
+                if chart_style=="Histogram":
 
-                fig, ax = plt.subplots(figsize=(8,6))
+                    fig, ax = plt.subplots(figsize=(8,6))
 
-                # Create a bar chart with the values of a and b
-                values = [a, b]
-                labels = [f"Genuine {a}", f"Fraud {b}"]
-                width=0.3
-                colors=['#FF7F50', 'red']
-                ax.bar(labels, values,width=width,color=colors,)
-                ax.set_ylabel('Values')
-                ax.set_title('Hisogram')
-                st.pyplot(fig) 
-                # Show the chart in Streamlit
+                    # Create a bar chart with the values of a and b
+                    values = [a, b]
+                    labels = [f"Genuine {a}", f"Fraud {b}"]
+                    width=0.3
+                    colors=['#FF7F50', 'red']
+                    ax.bar(labels, values,width=width,color=colors,)
+                    ax.set_ylabel('Values')
+                    ax.set_title('Hisogram')
+                    st.pyplot(fig) 
+                    # Show the chart in Streamlit
 
-            if chart_style=="Pie Chart":    
-                values=[a,b]
-                labels=[f"Genuine\n{a}",f"Fraud\n{b}"]
-                explode=[0.1,0]
-                colors=['#99ff99','red']
-                fig1, ax1 = plt.subplots(figsize=(3,4))
-                ax1.pie(values,labels=labels,autopct='%1.1f%%',colors=colors,explode=explode)   
-                st.pyplot(fig1) 
+                elif chart_style=="Pie Chart":    
+                    values=[a,b]
+                    labels=[f"Genuine\n{a}",f"Fraud\n{b}"]
+                    explode=[0.1,0]
+                    colors=['#99ff99','red']
+                    fig1, ax1 = plt.subplots(figsize=(3,4))
+                    ax1.pie(values,labels=labels,autopct='%1.1f%%',colors=colors,explode=explode)   
+                    st.pyplot(fig1) 
 
-            if chart_style=="Scatter Plot":
-                class_0 = df[df['Class'] == 0]
-                class_1 = df[df['Class'] == 1]
+                else:
+                    class_0 = df[df['Class'] == 0]
+                    class_1 = df[df['Class'] == 1]
 
-                # Create scatter plots
-                scatter_plot_0 = alt.Chart(class_0).mark_circle(size=60,color="green").encode(
-                    x='Time',
-                    y='Amount'
-                ).interactive()
+                    # Create scatter plots
+                    scatter_plot_0 = alt.Chart(class_0).mark_circle(size=60,color="green").encode(
+                        x='Time',
+                        y='Amount'
+                    ).interactive()
 
-                scatter_plot_1 = alt.Chart(class_1).mark_circle(size=60,color="red").encode(
-                    x='Time',
-                    y='Amount'
-                ).interactive()
+                    scatter_plot_1 = alt.Chart(class_1).mark_circle(size=60,color="red").encode(
+                        x='Time',
+                        y='Amount'
+                    ).interactive()
 
-                # Display scatter plots
-                st.write("Scatter plot of Number of Genuine Transaction")
-                st.altair_chart(scatter_plot_0, use_container_width=True)
+                    # Display scatter plots
+                    st.write("Scatter plot of Number of Genuine Transaction")
+                    st.altair_chart(scatter_plot_0, use_container_width=True)
 
-                st.write("Scatter plot of Number of Fraud Transaction")
-                st.altair_chart(scatter_plot_1, use_container_width=True)
+                    st.write("Scatter plot of Number of Fraud Transaction")
+                    st.altair_chart(scatter_plot_1, use_container_width=True)
 
             X=df.drop(["Class"],axis=1)
             Y=df["Class"]
