@@ -51,8 +51,7 @@ if uploaded_file is not None:
             
             st.write("")
             st.write("")
-            st.write("Distribution of Genuine and Fraud Transactions of various charts")
-            st.write("")
+            st.write("Distribution of Genuine and Fraud Transactions on various charts")
             st.write("")
  
             if chart_style=="Histogram":
@@ -95,7 +94,7 @@ if uploaded_file is not None:
                 ).interactive()
 
                 # Display scatter plots
-                st.write("Scatter plot of Number of Genuine Transaction")
+                st.write("Scatter plot of Number of Genuine Transaction",fontsize=12)
                 st.altair_chart(scatter_plot_0, use_container_width=True)
 
                 st.write("Scatter plot of Number of Fraud Transaction")
@@ -111,7 +110,6 @@ if uploaded_file is not None:
             X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=size,random_state=42)
             #if st.sidebar.checkbox('Show the shape of training and test set features and labels'):
             st.write("Distribution of data over Training and Test Set")
-            st.write("")
             st.write("")
             st.write("X_Train: ",X_train.shape)
             st.write("Y_Train: ",Y_train.shape)
