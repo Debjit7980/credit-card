@@ -72,7 +72,7 @@ if uploaded_file is not None:
                     st.pyplot(fig) 
                     # Show the chart in Streamlit
 
-                elif chart_style=="Pie Chart":    
+                if chart_style=="Pie Chart":    
                     values=[a,b]
                     labels=[f"Genuine\n{a}",f"Fraud\n{b}"]
                     explode=[0.1,0]
@@ -81,7 +81,7 @@ if uploaded_file is not None:
                     ax1.pie(values,labels=labels,autopct='%1.1f%%',colors=colors,explode=explode)   
                     st.pyplot(fig1) 
 
-                else:
+                if charty_style=="Scatter Plot":
                     class_0 = df[df['Class'] == 0]
                     class_1 = df[df['Class'] == 1]
 
