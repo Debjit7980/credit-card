@@ -8,11 +8,17 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import  confusion_matrix,classification_report
+from PIL import Image
+
+
 #from streamlit.uploaded_file_manager import UploadedFile
 
 st.title("Credit Card Fraud Detection\n")
 st.write("")
 st.write("")
+image = Image.open('1.jpg')
+
+st.image(image)
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
 st.write("")
 st.write("")
