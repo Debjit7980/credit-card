@@ -110,6 +110,9 @@ if uploaded_file is not None:
             size=st.sidebar.slider('Test Set Size',min_value=0.2,max_value=0.4)
             X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=size,random_state=42)
             #if st.sidebar.checkbox('Show the shape of training and test set features and labels'):
+            st.write("Distribution of data over Training and Test Set")
+            st.write("")
+            st.write("")
             st.write("X_Train: ",X_train.shape)
             st.write("Y_Train: ",Y_train.shape)
             st.write("X_Test: ",X_test.shape)
