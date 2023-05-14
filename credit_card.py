@@ -46,21 +46,17 @@ if uploaded_file is not None:
             a = int(df["Class"].value_counts()[0])
             b = int(df["Class"].value_counts()[1])
             perc_fra=b/(a+b)*100
-          
             chart_style=st.sidebar.selectbox(
                 label="Select the type of chart",
                 options=["Scatter Plot","Histogram","Pie Chart"]
-                )
-            #st.sidebar.write("To See the Genuine and Fraud cases of the dataset in form of charts")
+            )
+            st.sidebar.write("To See the Genuine and Fraud cases of the dataset in form of charts")
             st.write("")
             st.write("")
             st.write("Distribution of Genuine and Fraud Transactions on various charts")
             st.write("")
- 
             if chart_style=="Histogram":
-
                 fig, ax = plt.subplots(figsize=(8,6))
-
                 # Create a bar chart with the values of a and b
                 values = [a, b]
                 labels = [f"Genuine {a}", f"Fraud {b}"]
@@ -71,7 +67,6 @@ if uploaded_file is not None:
                 ax.set_title('Hisogram')
                 st.pyplot(fig) 
                 # Show the chart in Streamlit
-
             if chart_style=="Pie Chart":    
                 values=[a,b]
                 labels=[f"Genuine\n{a}",f"Fraud\n{b}"]
@@ -84,25 +79,21 @@ if uploaded_file is not None:
             if chart_style=="Scatter Plot":
                 class_0 = df[df['Class'] == 0]
                 class_1 = df[df['Class'] == 1]
-
                 # Create scatter plots
                 scatter_plot_0 = alt.Chart(class_0).mark_circle(size=60,color="green").encode(
                     x='Time',
                     y='Amount'
                 ).interactive()
-
                 scatter_plot_1 = alt.Chart(class_1).mark_circle(size=60,color="red").encode(
                     x='Time',
                     y='Amount'
                 ).interactive()
-
                 # Display scatter plots
                 st.write("Scatter plot of Number of Genuine Transaction",fontsize=12)
                 st.altair_chart(scatter_plot_0, use_container_width=True)
-
                 st.write("Scatter plot of Number of Fraud Transaction")
                 st.altair_chart(scatter_plot_1, use_container_width=True)
-              if st.sidebar.checkbox("Show the Genuine and Fraud Transaction Details"):
+            if st.sidebar.checkbox("Show the Genuine and Fraud Transaction Details"):
                 st.write(f"Fraudulent Transactions are: {round(perc_fra,3)} %")
                 st.write(f"Fraud Cases: {b}")
                 st.write(f"Genuine Cases: {a}")
