@@ -18,7 +18,7 @@ st.write("")
 st.write("")
 if uploaded_file is not None:
     
-    df=pd.read_csv("creditcard.csv")
+    df=pd.read_csv(uploaded_file.name)
     
     #df=df.sample(frac=0.1,random_state=48)
     if st.sidebar.checkbox("Show the DataSet"):
