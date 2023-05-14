@@ -24,7 +24,7 @@ if uploaded_file is not None:
         st.session_state.uploaded_file=uploaded_file
         #df=df.sample(frac=0.1,random_state=48)
         if uploaded_file:
-
+            st.write(df)
             if st.sidebar.checkbox("Show the DataSet"):
                 st.write("The Sample dataset is: ")
                 st.write("")
