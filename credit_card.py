@@ -25,7 +25,7 @@ if uploaded_file is not None:
         #df=df.sample(frac=0.1,random_state=48)
         if uploaded_file:
             st.write("The first few records of the dataset:")
-            st.write(df.head(70)
+            st.write(df.head(70))
             if st.sidebar.checkbox("Show the DataSet"):
                 st.write("The Sample of the dataset is: ")
                 st.write("")
