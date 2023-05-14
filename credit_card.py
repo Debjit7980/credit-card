@@ -16,7 +16,7 @@ from PIL import Image
 st.title("Credit Card Fraud Detection\n")
 st.write("")
 st.write("")
-image = Image.open('1.jpg')
+image = Image.open('./1.jpg')
 
 st.image(image)
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
