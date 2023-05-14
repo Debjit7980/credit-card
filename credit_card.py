@@ -165,7 +165,8 @@ if uploaded_file is not None:
 
         else:
             st.write("Upload the appropriate csv file first")
-    except:
+    except Exception as e:
+        print(e)
         st.write("Please enter the creditcard.csv file, anyother csv file will not work")
 
 
