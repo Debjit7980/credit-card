@@ -50,7 +50,7 @@ if uploaded_file is not None:
             chart_style=st.sidebar.selectbox(
                 label="Select the type of chart",
                 options=["Scatter Plot","Histogram","Pie Chart"]
-            )
+                )
             st.sidebar.write("To See the Genuine and Fraud cases of the dataset in form of charts")
             st.write("")
             st.write("")
