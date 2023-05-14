@@ -46,16 +46,12 @@ if uploaded_file is not None:
             a = int(df["Class"].value_counts()[0])
             b = int(df["Class"].value_counts()[1])
             perc_fra=b/(a+b)*100
-            if st.sidebar.checkbox("Show the Genuine and Fraud Transaction Details"):
-                st.write(f"Fraudulent Transactions are: {round(perc_fra,3)}%")
-                st.write(f"Fraud Cases: {b}")
-                st.write(f"Genuine Cases: {a}")
-            st.sidebar.write("To See the Genuine and Fraud cases of the dataset in form of charts")
+          
             chart_style=st.sidebar.selectbox(
                 label="Select the type of chart",
                 options=["Scatter Plot","Histogram","Pie Chart"]
             )
-            
+            st.sidebar.write("To See the Genuine and Fraud cases of the dataset in form of charts")
             st.write("")
             st.write("")
             st.write("Distribution of Genuine and Fraud Transactions on various charts")
@@ -106,7 +102,11 @@ if uploaded_file is not None:
 
                 st.write("Scatter plot of Number of Fraud Transaction")
                 st.altair_chart(scatter_plot_1, use_container_width=True)
-
+              if st.sidebar.checkbox("Show the Genuine and Fraud Transaction Details"):
+                st.write(f"Fraudulent Transactions are: {round(perc_fra,3)} %")
+                st.write(f"Fraud Cases: {b}")
+                st.write(f"Genuine Cases: {a}")
+            
             X=df.drop(["Class"],axis=1)
             Y=df["Class"]
             st.write("")
